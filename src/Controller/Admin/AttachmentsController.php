@@ -1,8 +1,9 @@
 <?php
 
-namespace Croogo\FileManager\Controller;
+namespace Croogo\FileManager\Controller\Admin;
 
-use FileManager\Controller\FileManagerAppController;
+use Croogo\FileManager\Controller\FileManagerAppController;
+
 /**
  * Attachments Controller
  *
@@ -114,7 +115,7 @@ class AttachmentsController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_index() {
+	public function index() {
 		$this->set('title_for_layout', __d('croogo', 'Attachments'));
 		$this->Prg->commonProcess();
 
@@ -152,7 +153,7 @@ class AttachmentsController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_add() {
+	public function add() {
 		$this->set('title_for_layout', __d('croogo', 'Add Attachment'));
 
 		if (isset($this->request->params['named']['editor'])) {
@@ -189,7 +190,7 @@ class AttachmentsController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_edit($id = null) {
+	public function edit($id = null) {
 		$this->set('title_for_layout', __d('croogo', 'Edit Attachment'));
 
 		if (isset($this->request->params['named']['editor'])) {
@@ -220,7 +221,7 @@ class AttachmentsController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_delete($id = null) {
+	public function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__d('croogo', 'Invalid id for Attachment'), 'flash', array('class' => 'error'));
 			return $this->redirect(array('action' => 'index'));
@@ -241,9 +242,9 @@ class AttachmentsController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_browse() {
+	public function browse() {
 		$this->layout = 'admin_popup';
-		$this->admin_index();
+		$this->setAction('index');
 	}
 
 }

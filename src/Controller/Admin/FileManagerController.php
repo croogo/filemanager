@@ -1,9 +1,10 @@
 <?php
 
-namespace Croogo\FileManager\Controller;
+namespace Croogo\FileManager\Controller\Admin;
 
 use Cake\Utility\File;
-use FileManager\Controller\FileManagerAppController;
+use Croogo\FileManager\Controller\FileManagerAppController;
+
 /**
  * FileManager Controller
  *
@@ -94,7 +95,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_index() {
+	public function index() {
 		return $this->redirect(array('action' => 'browse'));
 	}
 
@@ -104,7 +105,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_browse() {
+	public function browse() {
 		$this->folder = new Folder;
 
 		if (isset($this->request->query['path'])) {
@@ -137,12 +138,12 @@ class FileManagerController extends FileManagerAppController {
 	}
 
 /**
- * Admin editfile
+ * Admin edit file
  *
  * @return void
  * @access public
  */
-	public function admin_editfile() {
+	public function edit_file() {
 		if (isset($this->request->query['path'])) {
 			$path = $this->request->query['path'];
 			$absolutefilepath = $path;
@@ -178,7 +179,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_upload() {
+	public function upload() {
 		$this->set('title_for_layout', __d('croogo', 'Upload'));
 
 		if (isset($this->request->query['path'])) {
@@ -210,7 +211,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_delete_file() {
+	public function delete_file() {
 		if (!empty($this->request->data['path'])) {
 			$path = $this->request->data['path'];
 		} else {
@@ -243,7 +244,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_delete_directory() {
+	public function delete_directory() {
 		if (!empty($this->request->data['path'])) {
 			$path = $this->request->data['path'];
 		} else {
@@ -276,7 +277,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_rename() {
+	public function rename() {
 		$path = $this->request->query('path');
 		$pathFragments = array_filter(explode(DIRECTORY_SEPARATOR, $path));
 
@@ -326,7 +327,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_create_directory() {
+	public function create_directory() {
 		$this->set('title_for_layout', __d('croogo', 'Create Directory'));
 
 		if (isset($this->request->query['path'])) {
@@ -360,7 +361,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_create_file() {
+	public function create_file() {
 		$this->set('title_for_layout', __d('croogo', 'Create File'));
 
 		if (isset($this->request->query['path'])) {
@@ -393,7 +394,7 @@ class FileManagerController extends FileManagerAppController {
  * @return void
  * @access public
  */
-	public function admin_chmod() {
+	public function chmod() {
 	}
 
 }
